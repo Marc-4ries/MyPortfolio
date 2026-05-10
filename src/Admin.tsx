@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table, Form, Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; // Added this import
 
 const Admin = () => {
   const [comments, setComments] = useState<any[]>([]);
@@ -11,9 +11,8 @@ const Admin = () => {
   const [workLink, setWorkLink] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
   
-  const navigate = useNavigate(); // Initialize navigate hook
-  
-  // FIXED: Added /api to match your server routes
+  const navigate = useNavigate(); // Initialized the navigate function
+
   const API = "https://onrender.com";
 
   // This function fetches all current data from MongoDB
@@ -30,7 +29,7 @@ const Admin = () => {
       loadData();
     } else {
       alert("Unauthorized Access!");
-      navigate('/'); // Use navigate instead of window.location
+      navigate("/"); 
     }
   }, [navigate]);
 
@@ -106,7 +105,7 @@ const Admin = () => {
         </tbody>
       </Table>
 
-      <Button variant="secondary" onClick={() => navigate('/')} className="mt-3">Back Home</Button>
+      <Button variant="secondary" onClick={() => navigate("/")} className="mt-3">Back Home</Button>
     </div>
   );
 };
