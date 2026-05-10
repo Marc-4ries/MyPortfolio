@@ -75,5 +75,9 @@ app.delete('/api/admin/works/:id', async (req, res) => {
     res.send("Deleted");
 });
 
+app.get('/', (req, res) => {
+    res.send("Marc's Apptech Backend is running perfectly!");
+});
+
 const PORT = process.env.PORT || 5000; 
 app.listen(PORT, () => console.log(`Server is live on port ${PORT}`));
