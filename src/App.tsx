@@ -21,7 +21,7 @@ const PortfolioHome = () => {
   ];
 
   const [myWorks, setMyWorks] = useState<any[]>(initialWorks);
-  const API = "https://apptechfinalexam-myportfolio.onrender.com";
+const API = "https://onrender.com";
 
   // This part fetches any additional projects I add through my Admin dashboard
   useEffect(() => {
