@@ -12,40 +12,42 @@ const Admin = () => {
 
   const API = "https://onrender.com";
 
+  // This function fetches all current data from MongoDB
   const loadData = () => {
     axios.get(`${API}/admin/view-comments`).then(res => setComments(res.data));
     axios.get(`${API}/works`).then(res => setWorks(res.data));
   };
 
   useEffect(() => {
-    // Secret password check using my password
+    // Secret password prompt
     const pass = prompt("Admin Login Required:");
     if (pass === "My@admin@password") { 
       setIsLogged(true);
       loadData(); 
     } else {
+      alert("Unauthorized Access!");
       window.location.href = "/"; 
     }
   }, []);
 
-  // CRUD function to add/update projects in MongoDB
+  // CRUD: This part handles adding or updating projects in the database
   const handleWorkSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
       await axios.put(`${API}/admin/works/${editingId}`, { title: workTitle, link: workLink });
-      alert("Updated!");
+      alert("Update Successful!");
     } else {
       await axios.post(`${API}/admin/works`, { title: workTitle, link: workLink });
-      alert("Added!");
+      alert("Project Added to MongoDB!");
     }
     setWorkTitle(''); setWorkLink(''); setEditingId(null);
     loadData();
   };
 
-  // copies email to clipboard using backticks
+  // copies email to clipboard so I can reply manually
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
-    alert(`Copied: ${email}`);
+    alert(`Email Copied: ${email}`);
   };
 
   if (!isLogged) return null;
@@ -54,18 +56,18 @@ const Admin = () => {
     <div style={{ backgroundColor: '#0b0c10', minHeight: '100vh', color: '#fff', padding: '40px' }}>
       <h2 style={{ color: '#66fcf1' }} className="mb-4 text-center">Admin Dashboard</h2>
 
-      {/* CRUD Section for Works */}
-      <Card className="bg-dark border-info p-3 mb-5">
+      {/* Section to manage Portfolio project list */}
+      <Card className="bg-dark border-info p-3 mb-5 shadow">
         <h4 style={{ color: '#66fcf1' }}>{editingId ? "Edit Project" : "Add Extra Project Link"}</h4>
         <Form onSubmit={handleWorkSubmit}>
           <Form.Control className="bg-dark text-white mb-2" placeholder="Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
-          <Form.Control className="bg-dark text-white mb-2" placeholder="Link" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
-          <Button type="submit" variant="info">{editingId ? "Update" : "Add"}</Button>
+          <Form.Control className="bg-dark text-white mb-2" placeholder="GitHub URL" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
+          <Button type="submit" variant="info">{editingId ? "Save Edit" : "Add Link"}</Button>
         </Form>
       </Card>
 
-      <h4 style={{ color: '#66fcf1' }}>Portfolio Extras Table</h4>
-      <Table striped bordered hover variant="dark" className="mb-5">
+      <h4 style={{ color: '#66fcf1' }}>Extra Projects Database</h4>
+      <Table striped bordered hover variant="dark" className="mb-5 shadow">
         <thead><tr><th>Title</th><th>Actions</th></tr></thead>
         <tbody>
           {works.map(w => (
@@ -80,15 +82,15 @@ const Admin = () => {
         </tbody>
       </Table>
 
-      <h4 style={{ color: '#66fcf1' }}>Guest Messages</h4>
-      <Table striped bordered hover variant="dark">
+      <h4 style={{ color: '#66fcf1' }}>Guest Messages (Saved to MongoDB)</h4>
+      <Table striped bordered hover variant="dark" className="shadow">
         <thead><tr style={{ color: '#66fcf1' }}><th>Name</th><th>Email</th><th>Message</th><th>Actions</th></tr></thead>
         <tbody>
           {comments.map((c) => (
             <tr key={c._id}>
               <td>{c.username}</td><td>{c.email}</td><td>{c.needs}</td>
               <td>
-                <Button variant="outline-info" size="sm" className="me-2" onClick={() => copyEmail(c.email)}>Copy Email</Button>
+                <Button variant="outline-info" size="sm" className="me-2 fw-bold" onClick={() => copyEmail(c.email)}>Copy Email</Button>
                 <Button variant="danger" size="sm" onClick={async () => { await axios.delete(`${API}/admin/delete/${c._id}`); loadData(); }}>Delete</Button>
               </td>
             </tr>
