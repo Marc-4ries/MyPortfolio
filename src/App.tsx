@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, Container, Nav, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import emailjs from "@emailjs/browser";
+import About from './About';
 import Admin from './Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -72,6 +73,7 @@ const PortfolioHome = () => {
           </Navbar.Brand>
           <Nav className="ms-auto">
             <Nav.Link href="#works">Works</Nav.Link>
+            <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>
         </Container>
@@ -94,6 +96,11 @@ const PortfolioHome = () => {
           ))}
         </Row>
       </Container>
+
+      {/* About Section */}
+      <div id="about">
+        <About />
+      </div>
 
       <Container id="contact" className="py-5">
         <Row className="justify-content-center">
