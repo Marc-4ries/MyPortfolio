@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// I am using HashRouter here to fix the GitHub white screen issue
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
 import { Navbar, Container, Nav, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import emailjs from "@emailjs/browser"; 
+import emailjs from "@emailjs/browser";
 import Admin from './Admin'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,29 +12,28 @@ const PortfolioHome = () => {
   const [status, setStatus] = useState("");
 
   // These are my actual previous Apptech projects from GitHub
- const myWorks = [
-    { title: "Unit 1 Lesson 1", link: "https://marc-4ries.github.io/UNIT1_LESSON1_A_BANTASAN/" },
-    { title: "FG Lab 2", link: "https://marc-4ries.github.io/FG_LAB2_Bantasan/" },
-    { title: "Event Dashboard", link: "https://marc-4ries.github.io/event-dashboard/" },
-    { title: "Mg Lab 5", link: "https://marc-4ries.github.io/Mg_LAB_5/" },
-    { title: "Mg Lab 6", link: "https://marc-4ries.github.io/mg-lab-6-bantasan/" },
-    { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/" }
+  const myWorks = [
+    { title: "Unit 1 Lesson 1", link: "https://github.io" },
+    { title: "FG Lab 2", link: "https://github.io" },
+    { title: "Event Dashboard", link: "https://github.io" },
+    { title: "Mg Lab 5", link: "https://github.io" },
+    { title: "Mg Lab 6", link: "https://github.io" },
+    { title: "Finals Act 1", link: "https://github.io" }
   ];
 
-  // This handles the submit button for EmailJS and MongoDB
+  // This handles the submit button
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
-    
     try {
-      // First, I use axios to send the name, email, and message to MongoDB
+      //First, I use axios to send the name, email, and message to my MongoDB
       await axios.post('http://localhost:5000/api/feedback', { 
         username: formData.name, 
         email: formData.email, 
         needs: formData.comment 
       });
 
-      // Second, I use EmailJS to send the data to my email address
+      //Second, I use EmailJS to send the same data to my email address
       await emailjs.send(
         "service_e761yci", 
         "template_xaeuqza", 
@@ -118,10 +118,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-

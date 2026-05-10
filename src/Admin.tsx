@@ -37,10 +37,10 @@ const Admin = () => {
     }
   };
 
-  // This function copies the email address to the clipboard
+  // copies the email to my clipboard
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
-    alert(`Copied to clipboard: ${email}`);
+    alert(`Copied: ${email}`);
   };
 
   if (!isLogged) return null;
