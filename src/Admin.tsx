@@ -60,8 +60,10 @@ const Admin = () => {
       <Card className="bg-dark border-info p-3 mb-5 shadow">
         <h4 style={{ color: '#66fcf1' }}>{editingId ? "Edit Project" : "Add Extra Project Link"}</h4>
         <Form onSubmit={handleWorkSubmit}>
-          <Form.Control className="bg-dark text-white mb-2" placeholder="Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
-          <Form.Control className="bg-dark text-white mb-2" placeholder="GitHub URL" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
+            <Form.Label className="small text-info">Title:</Form.Label>
+          <Form.Control className="bg-white text-dark mb-2" placeholder="Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
+            <Form.Label className="small text-info">Link:</Form.Label>
+          <Form.Control className="bg-white text-dark mb-2" placeholder="GitHub URL" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
           <Button type="submit" variant="info">{editingId ? "Save Edit" : "Add Link"}</Button>
         </Form>
       </Card>
