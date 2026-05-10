@@ -10,7 +10,6 @@ const Admin = () => {
   const [workLink, setWorkLink] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
 
-  // My live Render link
   const API = "https://onrender.com";
 
   const loadData = () => {
@@ -19,6 +18,7 @@ const Admin = () => {
   };
 
   useEffect(() => {
+    // Secret password check using my password
     const pass = prompt("Admin Login Required:");
     if (pass === "My@admin@password") { 
       setIsLogged(true);
@@ -28,6 +28,7 @@ const Admin = () => {
     }
   }, []);
 
+  // CRUD function to add/update projects in MongoDB
   const handleWorkSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (editingId) {
@@ -41,6 +42,7 @@ const Admin = () => {
     loadData();
   };
 
+  // copies email to clipboard using backticks
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
     alert(`Copied: ${email}`);
@@ -50,20 +52,19 @@ const Admin = () => {
 
   return (
     <div style={{ backgroundColor: '#0b0c10', minHeight: '100vh', color: '#fff', padding: '40px' }}>
-      <h2 style={{ color: '#66fcf1' }} className="mb-4">Admin Dashboard</h2>
+      <h2 style={{ color: '#66fcf1' }} className="mb-4 text-center">Admin Dashboard</h2>
 
-      {/* CRUD Form for Works */}
-      <Card className="bg-dark border-info p-3 mb-5 shadow">
-        <h4 style={{ color: '#66fcf1' }}>{editingId ? "Edit Project" : "Add Project Link"}</h4>
+      {/* CRUD Section for Works */}
+      <Card className="bg-dark border-info p-3 mb-5">
+        <h4 style={{ color: '#66fcf1' }}>{editingId ? "Edit Project" : "Add Extra Project Link"}</h4>
         <Form onSubmit={handleWorkSubmit}>
-          <Form.Control className="bg-dark text-white mb-2" placeholder="Project Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
-          <Form.Control className="bg-dark text-white mb-2" placeholder="Project URL" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
+          <Form.Control className="bg-dark text-white mb-2" placeholder="Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
+          <Form.Control className="bg-dark text-white mb-2" placeholder="Link" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
           <Button type="submit" variant="info">{editingId ? "Update" : "Add"}</Button>
         </Form>
       </Card>
 
-      {/* Table to manage Portfolio links */}
-      <h4 style={{ color: '#66fcf1' }}>Manage My Works</h4>
+      <h4 style={{ color: '#66fcf1' }}>Portfolio Extras Table</h4>
       <Table striped bordered hover variant="dark" className="mb-5">
         <thead><tr><th>Title</th><th>Actions</th></tr></thead>
         <tbody>
@@ -79,13 +80,13 @@ const Admin = () => {
         </tbody>
       </Table>
 
-      <h4 style={{ color: '#66fcf1' }}>Guest Feedback</h4>
+      <h4 style={{ color: '#66fcf1' }}>Guest Messages</h4>
       <Table striped bordered hover variant="dark">
-        <thead><tr><th>Guest</th><th>Message</th><th>Actions</th></tr></thead>
+        <thead><tr style={{ color: '#66fcf1' }}><th>Name</th><th>Email</th><th>Message</th><th>Actions</th></tr></thead>
         <tbody>
           {comments.map((c) => (
             <tr key={c._id}>
-              <td>{c.username}</td><td>{c.needs}</td>
+              <td>{c.username}</td><td>{c.email}</td><td>{c.needs}</td>
               <td>
                 <Button variant="outline-info" size="sm" className="me-2" onClick={() => copyEmail(c.email)}>Copy Email</Button>
                 <Button variant="danger" size="sm" onClick={async () => { await axios.delete(`${API}/admin/delete/${c._id}`); loadData(); }}>Delete</Button>
@@ -94,6 +95,7 @@ const Admin = () => {
           ))}
         </tbody>
       </Table>
+      <Button variant="secondary" onClick={() => window.location.href = "/"} className="mt-3">Back Home</Button>
     </div>
   );
 };
