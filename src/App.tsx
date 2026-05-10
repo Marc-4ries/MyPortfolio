@@ -80,10 +80,28 @@ const PortfolioHome = () => {
             My Portfolio: MARC ARIES
           </Navbar.Brand>
           <Nav className="ms-auto">
-            {/* FIXED: Changed href to onClick with scroll function */}
-            <Nav.Link onClick={() => scrollToSection('works')}>Works</Nav.Link>
-            <Nav.Link onClick={() => scrollToSection('about')}>About</Nav.Link>
-            <Nav.Link onClick={() => scrollToSection('contact')}>Contact</Nav.Link>
+            {/* FIXED: Changed Nav.Link to buttons that scroll instead of navigating */}
+            <Button 
+              variant="link" 
+              className="nav-link" 
+              onClick={() => scrollToSection('works')}
+            >
+              Works
+            </Button>
+            <Button 
+              variant="link" 
+              className="nav-link" 
+              onClick={() => scrollToSection('about')}
+            >
+              About
+            </Button>
+            <Button 
+              variant="link" 
+              className="nav-link" 
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact
+            </Button>
           </Nav>
         </Container>
       </Navbar>
