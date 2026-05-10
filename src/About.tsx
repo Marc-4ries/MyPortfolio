@@ -50,10 +50,6 @@ export default function About() {
               <li className="text-uppercase fw-medium small text-info">
                 Beginner in Web Development
               </li>
-              <li className="text-info">•</li>
-              <li className="text-uppercase fw-medium small text-info">
-                Expert in prompt making.
-              </li>
             </ul>
           </Card>
         </Col>
