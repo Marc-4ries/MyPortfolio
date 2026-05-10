@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table, Form, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Admin = () => {
   const [comments, setComments] = useState<any[]>([]);
@@ -9,8 +10,11 @@ const Admin = () => {
   const [workTitle, setWorkTitle] = useState('');
   const [workLink, setWorkLink] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  const API = "https://apptechfinalexam-myportfolio.onrender.com";
+  
+  const navigate = useNavigate(); // Initialize navigate hook
+  
+  // FIXED: Added /api to match your server routes
+  const API = "https://onrender.com";
 
   // This function fetches all current data from MongoDB
   const loadData = () => {
@@ -21,14 +25,14 @@ const Admin = () => {
   useEffect(() => {
     // Secret password prompt
     const pass = prompt("Admin Login Required:");
-    if (pass === "My@admin@password") { 
+    if (pass === "My@admin@password") {
       setIsLogged(true);
-      loadData(); 
+      loadData();
     } else {
       alert("Unauthorized Access!");
-      window.location.href = "/"; 
+      navigate('/'); // Use navigate instead of window.location
     }
-  }, []);
+  }, [navigate]);
 
   // CRUD: This part handles adding or updating projects in the database
   const handleWorkSubmit = async (e: React.FormEvent) => {
@@ -40,7 +44,9 @@ const Admin = () => {
       await axios.post(`${API}/admin/works`, { title: workTitle, link: workLink });
       alert("Project Added to MongoDB!");
     }
-    setWorkTitle(''); setWorkLink(''); setEditingId(null);
+    setWorkTitle('');
+    setWorkLink('');
+    setEditingId(null);
     loadData();
   };
 
@@ -60,9 +66,9 @@ const Admin = () => {
       <Card className="bg-dark border-info p-3 mb-5 shadow">
         <h4 style={{ color: '#66fcf1' }}>{editingId ? "Edit Project" : "Add Extra Project Link"}</h4>
         <Form onSubmit={handleWorkSubmit}>
-            <Form.Label className="small text-info">Title:</Form.Label>
+          <Form.Label className="small text-info">Title:</Form.Label>
           <Form.Control className="bg-white text-dark mb-2" placeholder="Title" value={workTitle} onChange={(e)=>setWorkTitle(e.target.value)} required />
-            <Form.Label className="small text-info">Link:</Form.Label>
+          <Form.Label className="small text-info">Link:</Form.Label>
           <Form.Control className="bg-white text-dark mb-2" placeholder="GitHub URL" value={workLink} onChange={(e)=>setWorkLink(e.target.value)} required />
           <Button type="submit" variant="info">{editingId ? "Save Edit" : "Add Link"}</Button>
         </Form>
@@ -99,8 +105,10 @@ const Admin = () => {
           ))}
         </tbody>
       </Table>
-      <Button variant="secondary" onClick={() => window.location.href = "/"} className="mt-3">Back Home</Button>
+
+      <Button variant="secondary" onClick={() => navigate('/')} className="mt-3">Back Home</Button>
     </div>
   );
 };
+
 export default Admin;
