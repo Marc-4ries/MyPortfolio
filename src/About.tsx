@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export default function About() {

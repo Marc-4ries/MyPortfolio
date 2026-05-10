@@ -64,6 +64,14 @@ const PortfolioHome = () => {
     }
   };
 
+  // This function handles smooth scrolling to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div style={{ backgroundColor: '#0b0c10', color: '#fff', minHeight: '100vh' }}>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="border-bottom border-info">
@@ -72,9 +80,10 @@ const PortfolioHome = () => {
             My Portfolio: MARC ARIES
           </Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link href="#works">Works</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
+            {/* FIXED: Changed href to onClick with scroll function */}
+            <Nav.Link onClick={() => scrollToSection('works')}>Works</Nav.Link>
+            <Nav.Link onClick={() => scrollToSection('about')}>About</Nav.Link>
+            <Nav.Link onClick={() => scrollToSection('contact')}>Contact</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
