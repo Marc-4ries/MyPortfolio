@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Table, Form, Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Added this import
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const [comments, setComments] = useState<any[]>([]);
@@ -10,10 +10,9 @@ const Admin = () => {
   const [workTitle, setWorkTitle] = useState('');
   const [workLink, setWorkLink] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
-  
-  const navigate = useNavigate(); // Initialized the navigate function
 
-  const API = "https://onrender.com";
+  const navigate = useNavigate();
+  const API = "https://apptechfinalexam-myportfolio.onrender.com/api";
 
   // This function fetches all current data from MongoDB
   const loadData = () => {
@@ -29,7 +28,7 @@ const Admin = () => {
       loadData();
     } else {
       alert("Unauthorized Access!");
-      navigate("/"); 
+      navigate("/");
     }
   }, [navigate]);
 

@@ -21,7 +21,7 @@ const PortfolioHome = () => {
   ];
 
   const [myWorks, setMyWorks] = useState<any[]>(initialWorks);
-const API = "https://onrender.com";
+  const API = "https://apptechfinalexam-myportfolio.onrender.com/api";
 
   // This part fetches any additional projects I add through my Admin dashboard
   useEffect(() => {
@@ -36,7 +36,6 @@ const API = "https://onrender.com";
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
-
     try {
       // 1. Sending the guest info to my MongoDB on Render
       await axios.post(`${API}/feedback`, {
