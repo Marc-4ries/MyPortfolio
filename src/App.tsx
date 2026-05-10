@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, Container, Nav, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import emailjs from "@emailjs/browser";
-import Admin from './Admin'; 
+import Admin from './Admin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PortfolioHome = () => {
   const [formData, setFormData] = useState({ name: "", email: "", comment: "" });
   const [status, setStatus] = useState("");
-  
+
   // These are my 6 exact Apptech projects from my GitHub account
   const initialWorks = [
-    { title: "Unit 1 Lesson 1", link: "https://github.io" },
-    { title: "FG Lab 2", link: "https://github.io" },
-    { title: "Event Dashboard", link: "https://github.io" },
-    { title: "Mg Lab 5", link: "https://github.io" },
-    { title: "Mg Lab 6", link: "https://github.io" },
-    { title: "Finals Act 1", link: "https://github.io" }
+    { title: "Unit 1 Lesson 1", link: "https://marc-4ries.github.io/UNIT1_LESSON1_A_BANTASAN/" },
+    { title: "FG Lab 2", link: "https://marc-4ries.github.io/FG_LAB2_Bantasan/" },
+    { title: "Event Dashboard", link: "https://marc-4ries.github.io/event-dashboard/" },
+    { title: "Mg Lab 5", link: "https://marc-4ries.github.io/Mg_LAB_5/" },
+    { title: "Mg Lab 6", link: "https://marc-4ries.github.io/mg-lab-6-bantasan/" },
+    { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/" }
   ];
-  
+
   const [myWorks, setMyWorks] = useState<any[]>(initialWorks);
-  const API = "https://onrender.com";
+  const API = "https://apptechfinalexam-myportfolio.onrender.com";
 
   // This part fetches any additional projects I add through my Admin dashboard
   useEffect(() => {
@@ -36,18 +36,29 @@ const PortfolioHome = () => {
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
+
     try {
       // 1. Sending the guest info to my MongoDB on Render
-      await axios.post(`${API}/feedback`, { 
-        username: formData.name, email: formData.email, needs: formData.comment 
+      await axios.post(`${API}/feedback`, {
+        username: formData.name,
+        email: formData.email,
+        needs: formData.comment
       });
+
       // 2. Sending the same data to my personal email via EmailJS
-      await emailjs.send("service_e761yci", "template_xaeuqza", 
-        { from_name: formData.name, from_email: formData.email, message: formData.comment }, 
+      await emailjs.send(
+        "service_e761yci",
+        "template_xaeuqza",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.comment
+        },
         "feahIeQ5KRf17OGTk"
       );
+
       setStatus("Sent! Thank you for the feedback.");
-      setFormData({ name: "", email: "", comment: "" }); 
+      setFormData({ name: "", email: "", comment: "" });
     } catch (err) {
       setStatus("Error: Backend is likely offline.");
     }
@@ -57,7 +68,9 @@ const PortfolioHome = () => {
     <div style={{ backgroundColor: '#0b0c10', color: '#fff', minHeight: '100vh' }}>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top" className="border-bottom border-info">
         <Container>
-          <Navbar.Brand style={{ color: '#66fcf1' }} className="fw-bold">My Portfolio: MARC ARIES</Navbar.Brand>
+          <Navbar.Brand style={{ color: '#66fcf1' }} className="fw-bold">
+            My Portfolio: MARC ARIES
+          </Navbar.Brand>
           <Nav className="ms-auto">
             <Nav.Link href="#works">Works</Nav.Link>
             <Nav.Link href="#contact">Contact</Nav.Link>
@@ -73,7 +86,9 @@ const PortfolioHome = () => {
               <Card style={{ backgroundColor: '#1f2833', border: '1px solid #45a29e', color: '#fff' }} className="text-center h-100 p-2 shadow-sm">
                 <Card.Body>
                   <Card.Title className="small">{work.title}</Card.Title>
-                  <Button variant="outline-info" size="sm" href={work.link} target="_blank">Open Project</Button>
+                  <Button variant="outline-info" size="sm" href={work.link} target="_blank">
+                    Open Project
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

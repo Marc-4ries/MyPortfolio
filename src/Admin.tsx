@@ -10,7 +10,7 @@ const Admin = () => {
   const [workLink, setWorkLink] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
 
-  const API = "https://onrender.com";
+  const API = "https://apptechfinalexam-myportfolio.onrender.com";
 
   // This function fetches all current data from MongoDB
   const loadData = () => {
