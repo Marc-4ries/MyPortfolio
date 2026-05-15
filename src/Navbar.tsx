@@ -18,7 +18,6 @@ const Navbar = () => {
             <Nav.Link as={NavLink} to="/myworks" onClick={() => setExpanded(false)} style={{ color: '#5e4b3c', fontWeight: '500', margin: '0 8px' }}>Projects</Nav.Link>
             <Nav.Link as={NavLink} to="/about" onClick={() => setExpanded(false)} style={{ color: '#5e4b3c', fontWeight: '500', margin: '0 8px' }}>About</Nav.Link>
             <Nav.Link as={NavLink} to="/contact" onClick={() => setExpanded(false)} style={{ color: '#5e4b3c', fontWeight: '500', margin: '0 8px' }}>Contact</Nav.Link>
-            <Nav.Link as={NavLink} to="/admin" onClick={() => setExpanded(false)} style={{ color: '#b5835a', fontWeight: '500', margin: '0 8px' }}>Admin</Nav.Link>
           </Nav>
         </BootstrapNavbar.Collapse>
       </Container>

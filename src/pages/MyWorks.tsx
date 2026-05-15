@@ -10,7 +10,8 @@ const initialWorks = [
   { title: "Event Dashboard", link: "https://marc-4ries.github.io/event-dashboard/", description: "Interactive UI" },
   { title: "Mg Lab 5", link: "https://marc-4ries.github.io/Mg_LAB_5/", description: "JavaScript Core" },
   { title: "Mg Lab 6", link: "https://marc-4ries.github.io/mg-lab-6-bantasan/", description: "Dynamic Content" },
-  { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/", description: "Final Project" }
+  { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/", description: "Final Project" },
+  { title: "Events Manager", link: "https://projectscreationteam.github.io/APPTECHPROJECT/", description: "Community event management platform" }
 ];
 
 const MyWorks = () => {

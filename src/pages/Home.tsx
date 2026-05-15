@@ -12,7 +12,8 @@ const initialWorks = [
   { title: "Event Dashboard", link: "https://marc-4ries.github.io/event-dashboard/", previewImage: "", description: "Interactive event manager" },
   { title: "Mg Lab 5", link: "https://marc-4ries.github.io/Mg_LAB_5/", previewImage: "", description: "JavaScript fundamentals" },
   { title: "Mg Lab 6", link: "https://marc-4ries.github.io/mg-lab-6-bantasan/", previewImage: "", description: "DOM manipulation" },
-  { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/", previewImage: "", description: "Final exam project" }
+  { title: "Finals Act 1", link: "https://marc-4ries.github.io/aptechfinals1act/", previewImage: "", description: "Final exam project" },
+  { title: "Events Manager", link: "https://projectscreationteam.github.io/APPTECHPROJECT/", previewImage: "", description: "Community event management system" }
 ];
 
 const Home = () => {
