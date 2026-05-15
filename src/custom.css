@@ -1,0 +1,64 @@
+body {
+  background-color: #fdf8f0 !important;
+  font-family: 'Georgia', 'Times New Roman', serif !important;
+}
+
+.bg-success {
+  background-color: #d4a373 !important;
+}
+
+.text-success {
+  color: #d4a373 !important;
+}
+
+.btn-outline-success {
+  color: #b5835a;
+  border-color: #b5835a;
+}
+
+.btn-outline-success:hover {
+  background-color: #b5835a;
+  color: #fdf8f0;
+  border-color: #b5835a;
+}
+
+.card {
+  background-color: #fff8ed !important;
+  border: 1px solid #e3d5ca !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+}
+
+.card-title, .card-text {
+  color: #5e4b3c !important;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #c17a3a !important;
+  font-family: 'Georgia', serif !important;
+  letter-spacing: 1px !important;
+}
+
+.table {
+  background-color: #fdf8f0 !important;
+  color: #5e4b3c !important;
+}
+
+.table-dark {
+  background-color: #fdf8f0 !important;
+  color: #5e4b3c !important;
+}
+
+footer {
+  background-color: #fdf8f0 !important;
+  color: #5e4b3c !important;
+  border-top: 1px solid #e3d5ca !important;
+}
+
+.navbar-toggler {
+  border-color: #b5835a !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b5835a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
