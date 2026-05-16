@@ -3,7 +3,7 @@ import { Container, Table, Button, Card, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const API = "https://apptechfinalexam-myportfolio.onrender.com/api";
+const API = import.meta.env.VITE_API_URL;
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const Admin = () => {
   return (
     <Container className="py-5" style={{ backgroundColor: '#fdf8f0', minHeight: '100vh' }}>
       <h2 className="text-center mb-4" style={{ color: '#c17a3a' }}>Admin Dashboard</h2>
-      
+
       <Card className="p-4 mb-5">
         <h4 style={{ color: '#c17a3a' }}>{work.id ? "Edit Project" : "Add Project"}</h4>
         <Form onSubmit={handleSubmit}>
@@ -110,7 +110,7 @@ const Admin = () => {
           ))}
         </tbody>
       </Table>
-      
+
       <Button variant="outline-success" onClick={() => navigate("/")}>Back to Site</Button>
     </Container>
   );
