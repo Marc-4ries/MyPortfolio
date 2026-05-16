@@ -14,7 +14,7 @@ const Navbar = () => {
       className="shadow-sm"
     >
       <Container>
-        <BootstrapNavbar.Brand style={{ color: '#c17a3a', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '2px' }}>
+        <BootstrapNavbar.Brand style={{ color: '#c17a3a', fontWeight: 'bold', fontSize: '1.5rem', letterSpacing: '2px', fontFamily: 'Georgia, serif' }}>
           MARC ARIES
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
