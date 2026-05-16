@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://Aries:myAriespass@aptechprojects.ns4ubnz.mongodb.net/?appName=AptechProjects')
+mongoose.connect('mongodb+srv://Aries:JEvys7meALJjHAuW@aptechprojects.ns4ubnz.mongodb.net/?appName=AptechProjects')
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("DB error: ", err));
 
