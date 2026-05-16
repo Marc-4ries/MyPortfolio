@@ -20,39 +20,10 @@ const Navbar = () => {
         <BootstrapNavbar.Toggle onClick={() => setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link
-              as={NavLink}
-              to="/"
-              end
-              onClick={() => setExpanded(false)}
-              style={({ isActive }: { isActive: boolean }) => ({ color: isActive ? '#c17a3a' : '#5e4b3c', fontWeight: isActive ? '600' : '400' })}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              to="/myworks"
-              onClick={() => setExpanded(false)}
-              style={({ isActive }: { isActive: boolean }) => ({ color: isActive ? '#c17a3a' : '#5e4b3c', fontWeight: isActive ? '600' : '400' })}
-            >
-              Projects
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              to="/about"
-              onClick={() => setExpanded(false)}
-              style={({ isActive }: { isActive: boolean }) => ({ color: isActive ? '#c17a3a' : '#5e4b3c', fontWeight: isActive ? '600' : '400' })}
-            >
-              About
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              to="/contact"
-              onClick={() => setExpanded(false)}
-              style={({ isActive }: { isActive: boolean }) => ({ color: isActive ? '#c17a3a' : '#5e4b3c', fontWeight: isActive ? '600' : '400' })}
-            >
-              Contact
-            </Nav.Link>
+            <NavLink to="/" end className="nav-link" style={{ color: '#5e4b3c' }} onClick={() => setExpanded(false)}>Home</NavLink>
+            <NavLink to="/myworks" className="nav-link" style={{ color: '#5e4b3c' }} onClick={() => setExpanded(false)}>Projects</NavLink>
+            <NavLink to="/about" className="nav-link" style={{ color: '#5e4b3c' }} onClick={() => setExpanded(false)}>About</NavLink>
+            <NavLink to="/contact" className="nav-link" style={{ color: '#5e4b3c' }} onClick={() => setExpanded(false)}>Contact</NavLink>
           </Nav>
         </BootstrapNavbar.Collapse>
       </Container>
