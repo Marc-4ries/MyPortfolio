@@ -4,7 +4,7 @@ import axios from 'axios';
 import emailjs from '@emailjs/browser';
 import About from './About';
 
-const API = import.meta.env.VITE_API_URL;
+const API = "https://myportfolio-gnt2.onrender.com/api";
 
 const initialWorks = [
   { title: "Unit 1 Lesson 1", link: "https://marc-4ries.github.io/UNIT1_LESSON1_A_BANTASAN/", description: "Basic HTML/CSS project" },
@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     axios.get(`${API}/works`).then(res => {
-      if (res.data.length > 0) setMyWorks([...initialWorks, ...res.data]);
+      if (res.data && res.data.length > 0) setMyWorks([...initialWorks, ...res.data]);
     }).catch(() => console.log("Using default projects"));
   }, []);
 
@@ -40,16 +40,16 @@ const Home = () => {
         needs: formData.comment
       });
       await emailjs.send(
-        import.meta.env.VITE_EMAIL_SERVICE,
-        import.meta.env.VITE_EMAIL_TEMPLATE,
+        "service_ou7136l",
+        "template_xaeuqza",
         { from_name: formData.name, from_email: formData.email, message: formData.comment },
-        import.meta.env.VITE_EMAIL_PUBLIC_KEY
+        "feahIeQ5KRf17OGTk"
       );
       setStatus("Sent! Thank you.");
       setFormData({ name: "", email: "", comment: "" });
     } catch (err) {
       console.error(err);
-      setStatus("Error sending message. But your feedback was saved.");
+      setStatus("Error sending message.");
     }
   };
 

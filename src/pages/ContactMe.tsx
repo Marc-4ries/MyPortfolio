@@ -16,10 +16,10 @@ const ContactMe = () => {
     setLoading(true);
     try {
       await emailjs.send(
-        import.meta.env.VITE_EMAIL_SERVICE,
-        import.meta.env.VITE_EMAIL_TEMPLATE,
+        "service_ou7136l",
+        "template_xaeuqza",
         { from_name: formData.name, from_email: formData.email, message: formData.message },
-        import.meta.env.VITE_EMAIL_PUBLIC_KEY
+        "feahIeQ5KRf17OGTk"
       );
       setStatus("Message sent!");
       setFormData({ name: "", email: "", message: "" });
